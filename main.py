@@ -19,7 +19,7 @@ def create_image_from_commits(start_date, commits_per_date):
         commit_date = datetime.strptime(commit_date_str, '%d-%m-%Y')
         days_diff = (commit_date - start_date).days
         week_offset = days_diff // 7
-        day_of_week = days_diff % 7
+        day_of_week = 6 - (days_diff % 7)
 
         if 0 <= week_offset < width and 0 <= day_of_week < height:
             pixel_value = max(0, min(255, 255 - (num_commits * 51)))
