@@ -15,3 +15,9 @@ Once your repository is created, clone it to your local machine using the follow
 ```bash
 git clone https://github.com/DavidFrings/Contribution-Activity.git
 ```
+
+## Special Thanks
+
+A special thanks to the video by Dev Detour for the inspiration:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/_aDvNg9F6w8/0.jpg)](https://www.youtube.com/watch?v=_aDvNg9F6w8)
