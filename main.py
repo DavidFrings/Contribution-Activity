@@ -10,8 +10,7 @@ commit_levels = [1, 2, 3, 4, 5]
 weights = [40, 30, 15, 4, 1]
 
 def add_commits(date, count):
-    commits_per_date[date] = commits_per_date.get(date, 0) + count - 1
-    print(commits_per_date)
+    commits_per_date[date] = commits_per_date.get(date, 0) + count
 
 def create_image_from_commits(start_date, commits_per_date):
     img = Image.new('L', (width, height), color=255)
@@ -57,8 +56,8 @@ def main(img_name):
 
 def get_start_date(year):
     first_day_of_year = datetime(year, 1, 1)
-    days_to_sunday = first_day_of_year.weekday()  # Monday is 0, Sunday is 6
-    start_date = first_day_of_year - timedelta(days=days_to_sunday)
+    days_to_last_sunday = (first_day_of_year.weekday() - 6) % 7
+    start_date = first_day_of_year - timedelta(days=days_to_last_sunday)
     return start_date
 
 def read_image(img_name):
