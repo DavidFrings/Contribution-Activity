@@ -2,6 +2,7 @@ from PIL import Image
 from datetime import datetime, timedelta
 import subprocess
 import random
+import os
 
 commits_per_date = {}
 width, height = 53, 7  # DON'T CHANGE 
@@ -111,6 +112,8 @@ def create_commits_from_data():
 
 def push_commits():
     print("Pushing commits to remote repository...")
+    os.remove("list.txt")
+    subprocess.run(["git", "commit", "-m", "Nothing to see here... :)"])
     subprocess.run(["git", "push"])
     print("Commits pushed to the remote repository.")
 
