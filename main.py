@@ -77,7 +77,7 @@ def read_image(img_name):
             if commit_level > 0:
                 pixels_to_color.append((i, j, commit_level))
 
-    print(f"Pixels to color from image: {pixels_to_color}")
+    #print(f"Pixels to color from image: {pixels_to_color}")
     return pixels_to_color
 
 def generate_random_pattern():
