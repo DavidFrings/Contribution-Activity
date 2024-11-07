@@ -98,8 +98,8 @@ def create_commit(date):
     with open("list.txt", "a") as f:
         f.write("Hello, World!\n")
     subprocess.run(["git", "add", "list.txt"])
-    # Use shell=True for the date command here for better handling
-    subprocess.run(f"git commit -m 'commit' --date='{date_str}'", shell=True)
+    subprocess.run(["git", "commit", "-m", "commit"])
+    subprocess.run(["git", "commit", "--amend", "-m", "commit", f'--date="{date_str}"'])
 
 def create_commits_from_data():
     for date_str, num_commits in commits_per_date.items():
