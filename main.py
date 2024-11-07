@@ -1,12 +1,10 @@
-#THX ChatGPT for some help <3
 from PIL import Image
 from datetime import datetime, timedelta
 import subprocess
 import random
 
 commits_per_date = {}
-width, height = 53, 7 #DON'T CHANGE 
-pixels_to_color = []
+width, height = 53, 7  # DON'T CHANGE 
 
 commit_levels = [1, 2, 3, 4, 5]
 weights = [40, 30, 15, 4, 1]
@@ -64,7 +62,12 @@ def get_start_date(year):
 
 def read_image(img_name):
     im = Image.open(img_name).convert('L')
+    
+    if im.size != (width, height):
+        print(f"Error: Image size {im.size} does not match expected size {width}x{height}.")
+        return []
 
+    pixels_to_color = []
     for i in range(im.width):
         for j in range(im.height):
             pix_val = im.getpixel((i, j))
@@ -74,9 +77,11 @@ def read_image(img_name):
             if commit_level > 0:
                 pixels_to_color.append((i, j, commit_level))
 
+    print(f"Pixels to color from image: {pixels_to_color}")
     return pixels_to_color
 
 def generate_random_pattern():
+    pixels_to_color = []
     for i in range(width):
         for j in range(height):
             num_commits = random.choices(commit_levels, weights=weights)[0]
@@ -93,8 +98,8 @@ def create_commit(date):
     with open("list.txt", "a") as f:
         f.write("Hello, World!\n")
     subprocess.run(["git", "add", "list.txt"])
-    subprocess.run(["git", "commit", "-m", "commit"])
-    subprocess.run(["git", "commit", "--amend", "-m", "commit", f'--date="{date_str}"'])
+    # Use shell=True for the date command here for better handling
+    subprocess.run(f"git commit -m 'commit' --date='{date_str}'", shell=True)
 
 def create_commits_from_data():
     for date_str, num_commits in commits_per_date.items():

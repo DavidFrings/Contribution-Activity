@@ -11,8 +11,8 @@ git commit -m "Initial commit"
 
 set /p username=Enter your GitHub username: 
 set /p repo_name=Enter the repository name: 
-git remote add origin https://github.com/%username%/%repo_name%.git
-echo Remote origin set to https://github.com/%username%/%repo_name%.git
+git remote add origin git@github.com:%username%/%repo_name%.git
+echo Remote origin set to git@github.com:%username%/%repo_name%.git
 
 git push -u origin main
 
