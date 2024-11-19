@@ -18,7 +18,7 @@ git clone https://github.com/DavidFrings/Contribution-Activity.git
 
 ### 3. Starting
 
-Now you can edit the `template.png` or run the script with:
+Now you can edit the `template.png` and/or run the script with:
 
 ```bash
 python3 main.py
